@@ -2,7 +2,8 @@ import React, {  } from 'react';
 import './App.css';
 import Header from './Component/Header';
 import Cases from './Component/Cases';
-import Chart from './Component/Chart';
+import State from './Component/State';
+// import Chart from './Component/Chart';
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
       <div className="justify-content-center spacing mt-5">
         <Header />
         <Cases/>
-        <Chart/>
+        {/* <Chart/> */}
+        <State/>
       </div>
     </div>
 
