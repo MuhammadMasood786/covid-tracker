@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Paper } from '@material-ui/core';
-import { Line } from 'react-chartjs-2';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -63,35 +63,11 @@ const State = () => {
                                 <Typography variant="subtitle1" gutterBottom>
                                     Last Date: {new Date(globalState[ind].Date).toDateString()}
                                 </Typography>
-                                <Line data={{
-                                    labels: new Date(globalState[ind] && globalState[ind].lastUpdate && globalState[ind].lastUpdate).toDateString(),
-                                    datasets: [{
-                                        data:  globalState[ind].TotalConfirmed,
-                                        label: 'Infected',
-                                        borderColor: '#3333ff',
-                                        fill: true,
-                                    },
-                                    {
-                                        data:globalState[ind].NewRecovered,
-                                        label: 'Deaths',
-                                        borderColor: 'red',
-                                        backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                                        fill: true,
-                                    }]
-                                }}
-                                    options='option'
-                                />
                             </Paper>
                         </Grid>
-
                     )
                 })}
             </Grid>
-
-
-            {/* 
-                
-            </Grid> */}
         </div>
     );
 }
