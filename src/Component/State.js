@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Paper } from '@material-ui/core';
+import { Line } from 'react-chartjs-2';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,20 +32,20 @@ const State = () => {
     return (
         <div className="container">
             <div className="row justify-content-center mt-5 heading">
-                <h1>Covid Cases By States</h1>
+                <h1>Covid Cases By Countries</h1>
             </div>
             <Grid container spacing={3} >
                 {globalState.map((key, ind) => {
                     return (
                         <Grid item xs={12} sm={4} key={ind}>
                             <Paper className={classes.paper}>
-                                <Typography variant="h5"  style={{ color: 'black' }} gutterBottom>
+                                <Typography variant="h5" style={{ color: 'black' }} gutterBottom>
                                     {globalState[ind].Country}
                                 </Typography>
-                                <Typography variant="subtitle1"  gutterBottom >
+                                <Typography variant="subtitle1" gutterBottom >
                                     Infected: {globalState[ind].TotalConfirmed}
                                 </Typography>
-                                <Typography variant="subtitle1"  gutterBottom >
+                                <Typography variant="subtitle1" gutterBottom >
                                     New Infected: {globalState[ind].NewConfirmed}
                                 </Typography>
                                 <Typography variant="subtitle1" gutterBottom>
@@ -57,11 +58,29 @@ const State = () => {
                                     Deaths: {globalState[ind].TotalDeaths}
                                 </Typography>
                                 <Typography variant="subtitle1" gutterBottom>
-                                   New Deaths: {globalState[ind].NewDeaths}
+                                    New Deaths: {globalState[ind].NewDeaths}
                                 </Typography>
                                 <Typography variant="subtitle1" gutterBottom>
-                                   Last Date: {new Date(globalState[ind].Date).toDateString()}
+                                    Last Date: {new Date(globalState[ind].Date).toDateString()}
                                 </Typography>
+                                <Line data={{
+                                    labels: new Date(globalState[ind] && globalState[ind].lastUpdate && globalState[ind].lastUpdate).toDateString(),
+                                    datasets: [{
+                                        data:  globalState[ind].TotalConfirmed,
+                                        label: 'Infected',
+                                        borderColor: '#3333ff',
+                                        fill: true,
+                                    },
+                                    {
+                                        data:globalState[ind].NewRecovered,
+                                        label: 'Deaths',
+                                        borderColor: 'red',
+                                        backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                                        fill: true,
+                                    }]
+                                }}
+                                    options='option'
+                                />
                             </Paper>
                         </Grid>
 
