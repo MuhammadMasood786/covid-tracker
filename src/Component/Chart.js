@@ -28,13 +28,13 @@ const Chart = () => {
             <Line data={{
                 labels:  new Date(globalState && globalState.lastUpdate && globalState.lastUpdate).toDateString(),
                 datasets: [{
-                    data:[globalState && globalState.TotalConfirmed && globalState.TotalConfirmed],
+                    data:[globalState && globalState.Global && globalState.Global.TotalConfirmed],
                     label: 'Infected',
                     borderColor: '#3333ff',
                     fill: true,
                 },
                 {
-                    data:  [globalState && globalState.NewRecovered && globalState.NewRecovered],
+                    data:  [globalState && globalState.Global &&  globalState.Global.NewRecovered],
                     label: 'Deaths',
                     borderColor: 'red',
                     backgroundColor: 'rgba(255, 0, 0, 0.5)',
