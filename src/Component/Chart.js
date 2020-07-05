@@ -26,7 +26,7 @@ const Chart = () => {
     return (
         <div className='container mt-5'>
             <Line data={{
-                labels:  new Date(globalState && globalState.lastUpdate && globalState.lastUpdate).toDateString(),
+                labels:  new Date(globalState && globalState.Date && globalState.Date).toDateString(),
                 datasets: [{
                     data:[globalState && globalState.Global && globalState.Global.TotalConfirmed],
                     label: 'Infected',
